@@ -19,6 +19,10 @@ Dockerising the hard-to-install astronmy packages
 
     ```docker run -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v <any volume you want>:/home -e DISPLAY=host.docker.internal:0 ghcr.io/astrophpeter/astrodocker:latest bash```
 
-8. Run pyraf
+8. Set USER variable
+   
+   ```export USER=<whatever>```
 
-    ```pyraf```
+9. Run pyraf
+
+     ```pyraf```
