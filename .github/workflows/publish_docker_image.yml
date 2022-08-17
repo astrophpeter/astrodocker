@@ -51,4 +51,4 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          platforms: linux/arm64,linux/amd64
+          platforms: linux/amd64
