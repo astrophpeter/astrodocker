@@ -11,6 +11,7 @@ on:
     branches: [main]
     paths:
       - "*/Dockerfile"
+      - ".github/workflows/publish_docker_image.yml"
 
 jobs:
   docker:
@@ -50,3 +51,4 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          platforms: linux/arm64,linux/amd64
