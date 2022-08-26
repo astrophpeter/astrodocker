@@ -46,8 +46,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           builder: ${{ steps.buildx.outputs.name }}
-          context: ./iraf
-          file: ./iraf/Dockerfile
+          context: ./pyraf
+          file: ./pyraf/Dockerfile
           tags: ${{ steps.prep.outputs.tags }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
