@@ -14,4 +14,5 @@ ENV PATH $SNANA_DIR/bin:$SNANA_DIR/util:$PATH
 
 WORKDIR /home/
 RUN git clone https://github.com/RickKessler/SNANA /home/SNANA/
+COPY ./Makefile $SNANA_DIR/src/Makefile
 RUN cd $SNANA_DIR/src/ && make
