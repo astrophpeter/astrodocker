@@ -3,9 +3,8 @@ name: Docker image builds
 on:
   push:
     branches: [main]
-    paths:
-      - "*/Dockerfile"
-      - ".github/workflows/publish_docker_image.yml"
+  pull_request:
+    branches: [main]
 
 jobs:
   docker:
