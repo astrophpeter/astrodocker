@@ -1,0 +1,9 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  web:
+    build: .
+    volumes:
+      - $SNDATA_ROOT:/home/SNANA_ROOT
+      - $DATA_ROOT:/home/data
+      - Makefile:/home/SNANA/src/Makefile
+

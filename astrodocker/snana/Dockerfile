@@ -7,12 +7,11 @@ RUN apt-get install -y git
 RUN apt-get install -y make
 RUN apt-get install -y gfortran
 
-ENV CFITSIO_DIR=usr/share/doc/libcfitsio/cfitsio
-ENV GSL_DIR=usr
-ENV SNANA_DIR=/usr/share/doc/SNANA
+ENV CFITSIO_DIR=/usr
+ENV GSL_DIR=/usr
+ENV SNANA_DIR=/home/SNANA
 ENV PATH $SNANA_DIR/bin:$SNANA_DIR/util:$PATH
 
 WORKDIR /home/
-RUN git clone https://github.com/RickKessler/SNANA /usr/share/doc/SNANA/
-
-RUN cd /usr/share/doc/SNANA/src && make
+RUN git clone https://github.com/RickKessler/SNANA /home/SNANA/
+RUN cd $SNANA_DIR/src/ && make
