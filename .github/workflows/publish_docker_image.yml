@@ -1,10 +1,4 @@
-name: Publish Docker image
-
-# This workflow manages the testing, building, and publishing of docker images
-# On a pull request to main:
-#   If docker related files are changed, the image is test built and not published
-# On a push to main (or a new tag is created on master):
-#   The docker image is built and tagged with latest and and / or new tag version
+name: Docker image builds
 
 on:
   push:
