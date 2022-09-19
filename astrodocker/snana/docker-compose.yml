@@ -5,5 +5,5 @@ services:
     volumes:
       - $SNDATA_ROOT:/home/SNANA_ROOT
       - $DATA_ROOT:/home/data
-      - Makefile:/home/SNANA/src/Makefile
+      - ./Makefile:/home/SNANA/src/Makefile
 
