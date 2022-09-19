@@ -22,7 +22,7 @@ jobs:
       - name: Prepare
         id: prep
         run: |
-          DOCKER_IMAGE=ghcr.io/astrophpeter/astrodocker/pyraf
+          DOCKER_IMAGE=ghcr.io/astrophpeter/USCS_spectral_pipeline
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/v}
             TAGS="${DOCKER_IMAGE}:${VERSION},${DOCKER_IMAGE}:latest"
@@ -46,8 +46,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           builder: ${{ steps.buildx.outputs.name }}
-          context: ./iraf
-          file: ./iraf/Dockerfile
+          context: ./pyraf
+          file: ./pyraf/Dockerfile
           tags: ${{ steps.prep.outputs.tags }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
