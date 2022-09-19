@@ -5,4 +5,5 @@ services:
     volumes:
       - $SNDATA_ROOT:/home/SNANA_ROOT
       - $DATA_ROOT:/home/data
-
+    env_file:
+      - .env
