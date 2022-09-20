@@ -1,0 +1,6 @@
+libcfitsio-dev
+libgsl-dev
+libncurses-dev
+make
+gfortran
+wget

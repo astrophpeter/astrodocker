@@ -1,12 +1,18 @@
 FROM python:slim-buster
 RUN apt-get update -y
-RUN apt-get install -y libcfitsio-dev
-RUN apt-get install -y libgsl-dev
-RUN apt-get install -y libncurses-dev
-RUN apt-get install -y git
-RUN apt-get install -y make
-RUN apt-get install -y gfortran
-RUN apt-get install -y wget
+
+COPY ./requirements.apt-get.txt /requirements.apt-get.txt
+RUN sed 's/#.*//' /requirements.apt-get.txt | xargs apt-get install -y
+
+COPY ./requirements.pip.txt /requirements.pip.txt
+RUN pip3 install -r /requirements.pip.txt
+#RUN apt-get install -y libcfitsio-dev
+#RUN apt-get install -y libgsl-dev
+#RUN apt-get install -y libncurses-dev
+#RUN apt-get install -y git
+#RUN apt-get install -y make
+#RUN apt-get install -y gfortran
+#RUN apt-get install -y wget
 
 ARG SNANA_VERSION
 ARG SNANA_LIB_SDIR
