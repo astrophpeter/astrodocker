@@ -9,7 +9,6 @@ RUN apt-get install -y gfortran
 RUN apt-get install -y wget
 
 ARG SNANA_VERSION
-ARG ARCH
 ARG SNANA_LIB_SDIR
 
 ENV SOFT_DIR=/usr
