@@ -1,7 +1,7 @@
 version: "3.9"  # optional since v1.27.0
 services:
   snana:
-    build: .
+    image: snana
     volumes:
       - $SNDATA_ROOT:/home/SNANA_ROOT
       - $DATA_ROOT:/home/data

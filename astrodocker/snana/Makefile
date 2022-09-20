@@ -125,10 +125,10 @@ endif
 
 # ------------------------------------------
 # default lib-subdir name is just 'lib'.
-ifndef SNANA_LIB_SDIR
-    LIB_SDIR = SNANA_LIB_SDIR
-elseif
-    LIB_SDIR = lib/x86_64-linux-gnu
+ifndef $(SNANA_LIB_SDIR)
+   LIB_SDIR = $(SNANA_LIB_SDIR)
+else
+   LIB_SDIR = lib/x86_64-linux-gnu
 endif
 
 # --------------------------
