@@ -1,0 +1,32 @@
+name: SNANA image build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - astrodocker/snana/*
+  pull_request:
+    branches: [main]
+    paths:
+      - astrodocker/snana/*
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build snana
+        id: snana_build
+        uses: docker/build-push-action@v3
+        with:
+          builder: ${{ steps.buildx.outputs.name }}
+          context: ./astrodocker/snana
+          file: ./astrodocker/snana/Dockerfile
+          build-args: SNANA_VERSION=11_04m,SNANA_LIB_SDIR=lib/x84_64-linux-gnu
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64
+          push: false
