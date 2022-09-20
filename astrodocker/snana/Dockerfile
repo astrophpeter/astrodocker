@@ -22,5 +22,3 @@ RUN wget -qO- https://github.com/RickKessler/SNANA/archive/refs/tags/v${SNANA_VE
 COPY ./Makefile $SNANA_DIR/src/Makefile
 WORKDIR $SNANA_DIR/src/
 RUN make
-
-
