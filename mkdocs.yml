@@ -1,3 +1,4 @@
 site_name: astrodocker
+repo_url: https://github.com/astrophpeter/astrodocker/
 theme:
   name: material
