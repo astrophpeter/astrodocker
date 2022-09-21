@@ -1,17 +1,6 @@
-# Welcome to MkDocs
+# astrodocker
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+astrodocker provides [Docker](https://www.docker.com/) recipes for some 
+popular hard-to-install astronomy software packages. This allows you to run 
+these software packages without installing them natively on your own machine. 
 
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
