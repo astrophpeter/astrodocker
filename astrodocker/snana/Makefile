@@ -87,7 +87,7 @@ CC   = gcc
   EXTRA_FLAGS = -O1    # -ftree-vectorize -ftree-vectorizer-verbose=2
   PROFILEFLAG =
 
-M64_FLAG = -m64
+M64_FLAG = #-m64
 
 # EXTRA_FLAGS = -O2 -
 #EXTRA_FLAGS = -g -fbounds-check  # valgrind --leak-check=full

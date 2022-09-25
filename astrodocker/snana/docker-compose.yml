@@ -1,9 +1,9 @@
 version: "3.9"  # optional since v1.27.0
 services:
   snana:
-    image: snana
+    image: snana:$SNANA_VERSION
     volumes:
       - $SNDATA_ROOT:/home/SNANA_ROOT
       - $DATA_ROOT:/home/data
     env_file:
-      - .env
+      - env.public
