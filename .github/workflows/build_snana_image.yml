@@ -13,17 +13,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Dotenv Action
+        id: dotenv
         uses: falti/dotenv-action@v0.2.8
         with:
           path: astrodocker/snana/env.public
-      - name: test image build
+      - name: Test image build
+        id: image_build
         run: cd astrodocker/snana/ && bash build.sh
+      - name: Create badge data
+        id: badge_data
+        run: |
+          if [[ ${{steps.image_build.outcome == 'success'}} ]]; then
+            echo ::set-output name=status::passed
+            echo ::set-output name=color::green
+          else
+            echo ::set-output name=status::failed
+            echo ::set-output name=color::red
+          fi
       - name: Create version Badge
         uses: schneegans/dynamic-badges-action@v1.4.0
         with:
           auth: ${{ secrets.SNANA_BADGE_SECRET }}
           gistID: af76363686010da1eae8efc3275f5b42
           filename: snana_badge.json
-          label: Hello
-          message: World
-          color: green
+          label: SNANA v${{ steps.dotenv.outputs.SNANA_VERSION }} build
+          message: ${{ steps.badge_data.outputs.status }}
+          color: ${{ steps.badge_data.outputs.color }}
