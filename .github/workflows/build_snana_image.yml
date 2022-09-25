@@ -15,9 +15,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: ENV
-        id: dotenv
-        uses: ./.github/actions/dotenv-action
+      - name: Dotenv Action
+        uses: falti/dotenv-action@v0.2.8
         with:
           path: astrodocker/snana/env.public
       - name: test image build
