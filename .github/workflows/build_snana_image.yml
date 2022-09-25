@@ -18,3 +18,12 @@ jobs:
           path: astrodocker/snana/env.public
       - name: test image build
         run: cd astrodocker/snana/ && bash build.sh
+      - name: Create version Badge
+        uses: schneegans/dynamic-badges-action@v1.4.0
+        with:
+          auth: ${{ secrets.SNANA_BADGE_SECRET }}
+          gistID: af76363686010da1eae8efc3275f5b42
+          filename: snana_badge.json
+          label: Hello
+          message: World
+          color: orange
