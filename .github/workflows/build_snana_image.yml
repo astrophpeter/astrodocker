@@ -26,4 +26,4 @@ jobs:
           filename: snana_badge.json
           label: Hello
           message: World
-          color: orange
+          color: green
