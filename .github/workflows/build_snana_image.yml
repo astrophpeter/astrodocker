@@ -3,12 +3,9 @@ name: SNANA image build
 on:
   push:
     branches: [main]
-    paths:
-      - astrodocker/snana/*
   pull_request:
     branches: [main]
-    paths:
-      - astrodocker/snana/*
+
 jobs:
   docker:
     runs-on: ubuntu-latest
