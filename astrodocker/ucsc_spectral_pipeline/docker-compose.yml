@@ -1,0 +1,13 @@
+version: "3"
+services:
+  pipeline:
+    image: ucsc_spectral_pipeline:$UCSC_SPECTRAL_PIPELINE_VERSION
+    volumes:
+      - $SPECTRAL_PIPELINE_CODE:/home/UCSC_spectral_pipeline
+      - $SOCKET:/tmp/.X11-unix
+      - $IRAF_DISP_FILE:/etc/iraf/disp.cl
+      - $IRAF_LOGIN_FILE:/etc/iraf/login.cl
+      - $DATA_VOLUME:/home/data/
+    env_file:
+      - env.public
+

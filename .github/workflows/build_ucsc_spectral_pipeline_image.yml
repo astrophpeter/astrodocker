@@ -1,0 +1,45 @@
+name: SNANA image build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - astrodocker/ucsc_spectral_pipeline/*
+  pull_request:
+    branches: [main]
+    paths:
+      - astrodocker/ucsc_spectral_pipeline/*
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Dotenv Action
+        id: dotenv
+        uses: falti/dotenv-action@v0.2.8
+        with:
+          path: astrodocker/ucsc_spectral_pipeline/env.public
+      - name: Test image build
+        id: image_build
+        run: cd astrodocker/ucsc_spectral_pipeline/ && bash build.sh
+      - name: Create badge data
+        id: badge_data
+        run: |
+          if [[ ${{steps.image_build.outcome == 'success'}} ]]; then
+            echo ::set-output name=status::passed
+            echo ::set-output name=color::green
+          else
+            echo ::set-output name=status::failed
+            echo ::set-output name=color::red
+          fi
+      - name: Create version Badge
+        uses: schneegans/dynamic-badges-action@v1.4.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 179909d6b5fbb05b02a28c2840c9c6bf
+          filename: ucsc_spectral_pipeline_badge.json
+          label: UCSC spectral pipeline v${{ steps.dotenv.outputs.UCSC_SPECTRAL_PIPELINE_VERSION }} build
+          message: ${{ steps.badge_data.outputs.status }}
+          color: ${{ steps.badge_data.outputs.color }}
